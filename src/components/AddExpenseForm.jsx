@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { AppContext } from '../context/AppContext';
 
+import { ADD_EXPENSE } from '../utils/const';
+
 const AddExpenseForm = () => {
   const { dispatch } = useContext(AppContext);
 
@@ -19,7 +21,7 @@ const AddExpenseForm = () => {
     };
 
     dispatch({
-      type: 'ADD_EXPENSE',
+      type: ADD_EXPENSE,
       payload: expense
     });
   };
