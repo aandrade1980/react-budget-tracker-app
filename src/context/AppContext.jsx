@@ -1,5 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
+import { ADD_EXPENSE, REMOVE_EXPENSE, UPDATE_BUDGET } from '../utils/const';
+
 const initialState = {
   budget: 2000,
   expenses: [
@@ -11,17 +13,22 @@ const initialState = {
 
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_EXPENSE':
+    case ADD_EXPENSE:
       return {
         ...state,
         expenses: [...state.expenses, action.payload]
       };
-    case 'REMOVE_EXPENSE':
+    case REMOVE_EXPENSE:
       return {
         ...state,
         expenses: state.expenses.filter(
           expense => expense.id !== action.payload
         )
+      };
+    case UPDATE_BUDGET:
+      return {
+        ...state,
+        budget: action.payload
       };
     default:
       return state;

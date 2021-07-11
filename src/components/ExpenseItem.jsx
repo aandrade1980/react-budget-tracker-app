@@ -3,12 +3,14 @@ import { TiDelete } from 'react-icons/ti';
 
 import { AppContext } from '../context/AppContext';
 
+import { REMOVE_EXPENSE } from '../utils/const';
+
 const ExpenseItem = ({ id, name, cost }) => {
   const { dispatch } = useContext(AppContext);
 
   const handleItemRemove = () => {
     dispatch({
-      type: 'REMOVE_EXPENSE',
+      type: REMOVE_EXPENSE,
       payload: id
     });
   };
