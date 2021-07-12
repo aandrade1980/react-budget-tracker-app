@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { AppProvider } from './context/AppContext';
@@ -11,6 +11,7 @@ import AddExpenseForm from './components/AddExpenseForm';
 import EditBudgetForm from './components/EditBudgetForm';
 
 export default function App() {
+  const [search, setSearch] = useState('');
   return (
     <AppProvider>
       <div className="container">
@@ -26,10 +27,20 @@ export default function App() {
             <ExpenseTotal />
           </div>
         </div>
-        <h3 className="mt-3">Expenses</h3>
+        <h3 className="mt-3 d-flex justify-content-between">
+          Expenses
+          <input
+            className="form-control w-25"
+            id="search"
+            onChange={evt => setSearch(evt.target.value)}
+            placeholder="car service"
+            type="text"
+            value={search}
+          />
+        </h3>
         <div className="row mt-3">
           <div className="col-sm">
-            <ExpenseList />
+            <ExpenseList search={search} />
           </div>
         </div>
         <h3 className="mt-3">Add Expense</h3>

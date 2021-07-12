@@ -38,7 +38,7 @@ const AddExpenseForm = () => {
             id="name"
             value={name}
             onChange={evt => setName(evt.target.value)}
-          ></input>
+          />
         </div>
         <div className="col-sm">
           <label htmlFor="cost">Cost</label>
@@ -49,7 +49,7 @@ const AddExpenseForm = () => {
             id="cost"
             value={cost}
             onChange={evt => setCost(evt.target.value)}
-          ></input>
+          />
         </div>
       </div>
       <div className="row">
