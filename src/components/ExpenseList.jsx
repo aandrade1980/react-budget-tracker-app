@@ -4,12 +4,16 @@ import { AppContext } from '../context/AppContext';
 
 import ExpenseItem from './ExpenseItem';
 
-const ExpenseList = () => {
+const ExpenseList = ({ search }) => {
   const { expenses } = useContext(AppContext);
+
+  const filteredExpenses = expenses.filter(expense =>
+    expense.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <ul className="list-group">
-      {expenses.map(({ id, name, cost }) => (
+      {filteredExpenses.map(({ id, name, cost }) => (
         <ExpenseItem key={id} id={id} name={name} cost={cost} />
       ))}
     </ul>
